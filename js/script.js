@@ -10,37 +10,18 @@ document.addEventListener("DOMContentLoaded", function () {
         year.textContent = new Date().getFullYear();
     }
 
-});
+    const formMessage = document.getElementById("formMessage");
+    const params = new URLSearchParams(window.location.search);
 
-
-// =========================
-// CONTACT FORM
-// =========================
-
-const contactForm = document.getElementById("contactForm");
-
-if (contactForm) {
-
-    contactForm.addEventListener("submit", function (event) {
-
-        event.preventDefault();
-
-        const name = document.getElementById("name").value;
-
-        const formMessage =
-            document.getElementById("formMessage");
-
+    if (formMessage && params.get("success") === "1") {
         formMessage.innerHTML = `
             <div class="alert alert-success">
-                Thank you, ${name}! Your message has been received.
+                Thank you! Your message has been sent successfully.
             </div>
         `;
+    }
 
-        contactForm.reset();
-
-    });
-
-}
+});
 
 
 // =========================
